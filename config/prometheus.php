@@ -25,6 +25,11 @@ return [
     'default_namespace' => 'app',
 
     /*
+    * This is the default labels that will be
+    * used by all metrics
+    */
+    'default_labels' => ['laravel_app' => config('app.name')],
+    /*
      * The middleware that will be applied to the urls above
      */
     'middleware' => [

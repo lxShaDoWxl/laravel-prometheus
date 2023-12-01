@@ -12,14 +12,16 @@ class Gauge implements MetricType
 {
     protected array $values = [];
 
+    protected array $labelValues = [];
+
     public function __construct(
-        protected string $label,
+        protected string         $label,
         null|float|Closure|array $value,
-        protected ?string $name = null,
-        protected ?string $namespace = null,
-        protected ?string $helpText = null,
-        protected ?array $labelNames = [],
-        protected string $urlName = 'default',
+        protected ?string        $name = null,
+        protected ?string        $namespace = null,
+        protected ?string        $helpText = null,
+        protected ?array         $labelNames = [],
+        protected string         $urlName = 'default',
     ) {
         $this->name = $name ?? Str::slug($this->label, '_');
 
@@ -30,6 +32,11 @@ class Gauge implements MetricType
         $this->namespace = Str::of(config('prometheus.default_namespace'))
             ->slug('_')
             ->lower();
+        foreach (array_merge(config('prometheus.default_labels', []), $labelNames) as $labelName => $labelValue) {
+            $this->labelNames[] = $labelName;
+            $this->labelValues[] = $labelValue;
+        }
+
     }
 
     public function namespace(string $namespace): self
@@ -81,7 +88,7 @@ class Gauge implements MetricType
 
     public function value(array|float|Closure $value, array|string $labelValues = []): self
     {
-        $labelValues = Arr::wrap($labelValues);
+        $labelValues = Arr::wrap(array_merge($this->labelValues,$labelValues));
 
         $this->values[] = [$value, $labelValues];
 
@@ -111,8 +118,8 @@ class Gauge implements MetricType
         $value = value($value);
 
         if (is_array($value) && Arr::exists($value, 0) && is_array($value[0])) {
-            foreach ($value as $valueAndLabels) {
-                $this->handleValueAndLabels($gauge, $valueAndLabels);
+            foreach ($value as $subLabels) {
+                $this->handleValueAndLabels($gauge, $subLabels);
             }
 
             return;
