@@ -2,6 +2,40 @@
 
 All notable changes to `laravel-prometheus` will be documented in this file.
 
+## 1.1.0 - 2024-03-08
+
+### What's Changed
+
+* Add config setting if the collector registry should be wiped by @ekateiva in https://github.com/spatie/laravel-prometheus/pull/26
+* add ext-redis to dev dependencies by @pselge-5anker in https://github.com/spatie/laravel-prometheus/pull/29
+* Laravel 11 Support by @pselge-5anker in https://github.com/spatie/laravel-prometheus/pull/31
+
+### New Contributors
+
+* @ekateiva made their first contribution in https://github.com/spatie/laravel-prometheus/pull/26
+* @pselge-5anker made their first contribution in https://github.com/spatie/laravel-prometheus/pull/29
+
+**Full Changelog**: https://github.com/spatie/laravel-prometheus/compare/1.0.5...1.1.0
+
+## 1.0.5 - 2024-01-02
+
+### What's Changed
+
+* Fix typo by @ralphjsmit in https://github.com/spatie/laravel-prometheus/pull/19
+* Update composer.json to use Larastan Org by @arnebr in https://github.com/spatie/laravel-prometheus/pull/23
+* Missing ")" in some sections of creating-gauges.md by @jorgemurta in https://github.com/spatie/laravel-prometheus/pull/21
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/spatie/laravel-prometheus/pull/17
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/spatie/laravel-prometheus/pull/16
+* Bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1 by @dependabot in https://github.com/spatie/laravel-prometheus/pull/24
+
+### New Contributors
+
+* @ralphjsmit made their first contribution in https://github.com/spatie/laravel-prometheus/pull/19
+* @arnebr made their first contribution in https://github.com/spatie/laravel-prometheus/pull/23
+* @jorgemurta made their first contribution in https://github.com/spatie/laravel-prometheus/pull/21
+
+**Full Changelog**: https://github.com/spatie/laravel-prometheus/compare/1.0.4...1.0.5
+
 ## 1.0.4 - 2023-07-26
 
 ### What's Changed
