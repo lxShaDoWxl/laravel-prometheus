@@ -1,0 +1,8 @@
+variables:
+  INCRAFT_CI_TOOLS_BRANCH: "package-php-83"
+
+include:
+  - project: 'incraft/devops/ci-cd-gitlab'
+    ref: "package-php-83"
+    file: 'package.yml'
+
